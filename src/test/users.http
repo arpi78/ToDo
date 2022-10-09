@@ -1,0 +1,31 @@
+### User létrehozása
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "userEmail": "jack.doe@gmail.com"
+
+}
+
+### ToDo létrehozása
+POST http://localhost:8080/api/users/2/todos
+Content-Type: application/json
+
+{
+  "description": "Csinálj reggelit",
+  "deadline": "2021-01-24T15:53:16",
+  "importance": "NON_URGENT"
+}
+
+
+### ToDo-k lekérdezése
+GET http://localhost:8080/api/users/6/todos
+
+
+### ToDo státusz frissítése
+PUT http://localhost:8080/api/todos/1
+Content-Type: application/json
+
+{
+  "importance": "NON_URGENT"
+}
