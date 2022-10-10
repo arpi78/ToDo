@@ -3,27 +3,31 @@ POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
-  "userEmail": "jack.doe@gmail.com"
+  "userEmail": "jack.doe+gmail.com"
 
 }
 
 ### ToDo létrehozása
-POST http://localhost:8080/api/users/2/todos
+POST http://localhost:8080/api/users/1/todos
 Content-Type: application/json
 
 {
-  "description": "Csinálj reggelit",
-  "deadline": "2021-01-24T15:53:16",
+  "description": "Csinálj ebédet",
+  "deadline": "2023-01-24T15:53:16",
   "importance": "NON_URGENT"
 }
 
 
 ### ToDo-k lekérdezése
-GET http://localhost:8080/api/users/6/todos
+GET http://localhost:8080/api/users/1/todos
+
+### ToDo-k lekérdezése státusszal
+GET http://localhost:8080/api/users/1/todos?status=working_on_it
+
 
 
 ### ToDo státusz frissítése
-PUT http://localhost:8080/api/todos/1
+PUT http://localhost:8080/api/todos/122
 Content-Type: application/json
 
 {

@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -23,7 +24,7 @@ public class UserController {
     @Operation(summary = "Create a new user", description = "Create a new user with email address")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody CreateUserCommand command,
                                                   UriComponentsBuilder uri) {
-        var user = userService.createUser(command);
+        var user = userService.createToDo(command);
         return ResponseEntity
                 .created(uri.path("/api/users/{id}").buildAndExpand(user.getId()).toUri())
                 .body(user);
@@ -36,10 +37,10 @@ public class UserController {
     @PostMapping("/users/{id}/todos")
     @Operation(summary = "Create a new toDo", description = "Create a new toDo with user id")
     public ResponseEntity<ToDoDto> createToDo(@PathVariable("id") long userId,
-                                              @RequestBody CreateToDoCommand command,
+                                              @Valid @RequestBody CreateToDoCommand command,
                                               UriComponentsBuilder uri){
 
-        var toDo=userService.createUser(userId,command);
+        var toDo=userService.createToDo(userId,command);
 
         return ResponseEntity
                 .created(uri.path("api/users/{id}/todos").buildAndExpand(userId, toDo.getDescription()).toUri())
@@ -50,9 +51,9 @@ public class UserController {
 
     @GetMapping("/users/{id}/todos")
     @Operation(summary = "List toDos", description = "List toDos with user id")
-    List<ToDoDto> listToDos(@PathVariable("id") long id){
+    List<ToDoDto> listToDos(@PathVariable("id") long id,@RequestParam("status") Optional<String> status){
 
-        return userService.listToDos(id);
+        return userService.listToDos(id,status);
     }
 
     @PutMapping("/todos/{id}")
