@@ -27,9 +27,9 @@ GET http://localhost:8080/api/users/1/todos?status=working_on_it
 
 
 ### ToDo státusz frissítése
-PUT http://localhost:8080/api/todos/122
+PUT http://localhost:8080/api/todos/4
 Content-Type: application/json
 
 {
-  "importance": "NON_URGENT"
+  "status": "WORKING_ON_IT"
 }

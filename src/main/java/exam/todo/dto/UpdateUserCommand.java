@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class UpdateUserCommand {
 
-    private Importance importance;
+    private Status status;
 
 }

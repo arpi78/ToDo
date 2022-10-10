@@ -77,13 +77,12 @@ public class UserService {
 
 
 
-
     @Transactional
     public ToDoDto updateToDo(long id, UpdateUserCommand command) {
         var toDo = toDoRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Employee not found with id: " + id));
 
-        toDo.setImportance(command.getImportance());
+        toDo.setStatus(command.getStatus());
 
         return userMapper.toDto(toDo);
     }

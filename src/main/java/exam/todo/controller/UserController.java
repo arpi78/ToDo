@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @PutMapping("/todos/{id}")
-    @Operation(summary = "ToDo fontosságának a frissítése", description = "A toDo fontossságát frirrsíti, a toDo id-jával")
+    @Operation(summary = "ToDo státuszának a frissítése", description = "A toDo státuszát frirrsíti, a toDo id-jával")
     public ToDoDto updateUser(@PathVariable("id") long id,
                                              @RequestBody UpdateUserCommand command) {
         return userService.updateToDo(id, command);
