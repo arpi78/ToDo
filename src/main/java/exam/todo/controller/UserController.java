@@ -24,7 +24,7 @@ public class UserController {
     @Operation(summary = "Create a new user", description = "Create a new user with email address")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody CreateUserCommand command,
                                                   UriComponentsBuilder uri) {
-        var user = userService.createToDo(command);
+        var user = userService.createUser(command);
         return ResponseEntity
                 .created(uri.path("/api/users/{id}").buildAndExpand(user.getId()).toUri())
                 .body(user);

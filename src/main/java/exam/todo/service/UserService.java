@@ -8,7 +8,6 @@ import exam.todo.repository.ToDoRepository;
 import exam.todo.repository.UserNotFoundException;
 
 import exam.todo.repository.UsersRepository;
-import liquibase.repackaged.org.apache.commons.collections4.comparators.ReverseComparator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +28,7 @@ public class UserService {
 
     private UserMapper userMapper;
 
-    public UserDto createToDo(CreateUserCommand command) {
+    public UserDto createUser(CreateUserCommand command) {
         var user = userMapper.toEntity(command);
         usersRepository.save(user);
         return userMapper.toDto(user);

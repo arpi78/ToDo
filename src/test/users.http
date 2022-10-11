@@ -3,7 +3,7 @@ POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
-  "userEmail": "jack.doe+gmail.com"
+  "userEmail": "antonio.doe@gmail.com"
 
 }
 
@@ -22,14 +22,14 @@ Content-Type: application/json
 GET http://localhost:8080/api/users/1/todos
 
 ### ToDo-k lekérdezése státusszal
-GET http://localhost:8080/api/users/1/todos?status=working_on_it
+GET http://localhost:8080/api/users/1/todos?status=NOT_STARTED
 
 
 
 ### ToDo státusz frissítése
-PUT http://localhost:8080/api/todos/4
+PUT http://localhost:8080/api/todos/1
 Content-Type: application/json
 
 {
-  "status": "WORKING_ON_IT"
+  "status": "DONE"
 }
