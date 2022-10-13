@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  todo_api_service:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - maria_db
+    links:
+      - maria_db:my-mariadb
+  maria_db:
+    image: "mariadb:10.9.3"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: toDos
+      MYSQL_USER: toDo
+      MYSQL_PASSWORD: toDo
+      MYSQL_ROOT_PASSWORD: toDo
+
+
